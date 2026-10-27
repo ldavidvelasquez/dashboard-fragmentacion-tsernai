@@ -1,0 +1,8 @@
+﻿parametro,valor
+Resolución de píxel (m),29.8125
+Área de píxel (ha),0.08887858520363623
+min_node_area (km²),0.01
+min_node_area en píxeles (parche < 1 ha si tiene menos de),12.0
+edge_distance (m),0.0
+Regla de vecindad,8.0
+Área del paisaje (km²),2422.965328100633

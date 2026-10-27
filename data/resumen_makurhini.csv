@@ -1,0 +1,508 @@
+﻿anio,metrica_MK,valor
+1986,Patch area (km2),208.6524
+1986,Number of patches,3362.0
+1986,Size (mean),0.0621
+1986,Patches < minimum patch area,2009.0
+1986,Patches < minimum patch area (%),3.5201
+1986,Total edge,4715.936
+1986,Edge density,22.6019
+1986,Patch density,138.7556
+1986,Total Core Area (km2),208.6524
+1986,Cority,1.0
+1986,Shape Index (mean),1.6529
+1986,FRAC (mean),0.5007
+1986,MESH (km2),0.1464
+1987,Patch area (km2),129.7821
+1987,Number of patches,3234.0
+1987,Size (mean),0.0401
+1987,Patches < minimum patch area,2064.0
+1987,Patches < minimum patch area (%),5.2657
+1987,Total edge,3487.317
+1987,Edge density,26.8706
+1987,Patch density,133.4728
+1987,Total Core Area (km2),129.7821
+1987,Cority,1.0
+1987,Shape Index (mean),1.6219
+1987,FRAC (mean),0.3005
+1987,MESH (km2),0.0332
+1988,Patch area (km2),313.4977
+1988,Number of patches,3277.0
+1988,Size (mean),0.0957
+1988,Patches < minimum patch area,1830.0
+1988,Patches < minimum patch area (%),2.259
+1988,Total edge,5987.771
+1988,Edge density,19.0999
+1988,Patch density,135.2475
+1988,Total Core Area (km2),313.4977
+1988,Cority,1.0
+1988,Shape Index (mean),1.694
+1988,FRAC (mean),0.4061
+1988,MESH (km2),0.453
+1989,Patch area (km2),305.3796
+1989,Number of patches,3470.0
+1989,Size (mean),0.088
+1989,Patches < minimum patch area,2018.0
+1989,Patches < minimum patch area (%),2.506
+1989,Total edge,5953.138
+1989,Edge density,19.4942
+1989,Patch density,143.2129
+1989,Total Core Area (km2),305.3796
+1989,Cority,1.0
+1989,Shape Index (mean),1.6683
+1989,FRAC (mean),0.6081
+1989,MESH (km2),0.6036
+1990,Patch area (km2),225.2465
+1990,Number of patches,3083.0
+1990,Size (mean),0.0731
+1990,Patches < minimum patch area,1935.0
+1990,Patches < minimum patch area (%),2.9963
+1990,Total edge,4645.355
+1990,Edge density,20.6234
+1990,Patch density,127.2408
+1990,Total Core Area (km2),225.2465
+1990,Cority,1.0
+1990,Shape Index (mean),1.6413
+1990,FRAC (mean),0.4793
+1990,MESH (km2),0.3465
+1991,Patch area (km2),196.5711
+1991,Number of patches,2988.0
+1991,Size (mean),0.0658
+1991,Patches < minimum patch area,1798.0
+1991,Patches < minimum patch area (%),3.1391
+1991,Total edge,4299.324
+1991,Edge density,21.8716
+1991,Patch density,123.32
+1991,Total Core Area (km2),196.5711
+1991,Cority,1.0
+1991,Shape Index (mean),1.6622
+1991,FRAC (mean),-0.2007
+1991,MESH (km2),0.2028
+1992,Patch area (km2),240.3914
+1992,Number of patches,3017.0
+1992,Size (mean),0.0797
+1992,Patches < minimum patch area,1781.0
+1992,Patches < minimum patch area (%),2.6583
+1992,Total edge,4832.601
+1992,Edge density,20.1031
+1992,Patch density,124.5168
+1992,Total Core Area (km2),240.3914
+1992,Cority,1.0
+1992,Shape Index (mean),1.6661
+1992,FRAC (mean),0.9815
+1992,MESH (km2),0.3257
+1993,Patch area (km2),285.8177
+1993,Number of patches,2776.0
+1993,Size (mean),0.103
+1993,Patches < minimum patch area,1632.0
+1993,Patches < minimum patch area (%),2.1809
+1993,Total edge,5226.265
+1993,Edge density,18.2853
+1993,Patch density,114.5704
+1993,Total Core Area (km2),285.8177
+1993,Cority,1.0
+1993,Shape Index (mean),1.6986
+1993,FRAC (mean),0.5559
+1993,MESH (km2),0.5076
+1994,Patch area (km2),234.6958
+1994,Number of patches,3642.0
+1994,Size (mean),0.0644
+1994,Patches < minimum patch area,2216.0
+1994,Patches < minimum patch area (%),3.4185
+1994,Total edge,4922.209
+1994,Edge density,20.9727
+1994,Patch density,150.3117
+1994,Total Core Area (km2),234.6958
+1994,Cority,1.0
+1994,Shape Index (mean),1.6304
+1994,FRAC (mean),0.3969
+1994,MESH (km2),0.329
+1995,Patch area (km2),312.3951
+1995,Number of patches,3025.0
+1995,Size (mean),0.1033
+1995,Patches < minimum patch area,1760.0
+1995,Patches < minimum patch area (%),2.1453
+1995,Total edge,5644.344
+1995,Edge density,18.068
+1995,Patch density,124.847
+1995,Total Core Area (km2),312.3951
+1995,Cority,1.0
+1995,Shape Index (mean),1.6881
+1995,FRAC (mean),0.2501
+1995,MESH (km2),0.5956
+1996,Patch area (km2),371.2309
+1996,Number of patches,2868.0
+1996,Size (mean),0.1294
+1996,Patches < minimum patch area,1628.0
+1996,Patches < minimum patch area (%),1.7433
+1996,Total edge,6078.201
+1996,Edge density,16.3731
+1996,Patch density,118.3674
+1996,Total Core Area (km2),371.2309
+1996,Cority,1.0
+1996,Shape Index (mean),1.6986
+1996,FRAC (mean),0.0837
+1996,MESH (km2),1.0363
+1997,Patch area (km2),290.1351
+1997,Number of patches,3283.0
+1997,Size (mean),0.0884
+1997,Patches < minimum patch area,1966.0
+1997,Patches < minimum patch area (%),2.43
+1997,Total edge,5461.724
+1997,Edge density,18.8248
+1997,Patch density,135.4951
+1997,Total Core Area (km2),290.1351
+1997,Cority,1.0
+1997,Shape Index (mean),1.6777
+1997,FRAC (mean),0.1645
+1997,MESH (km2),0.4226
+1998,Patch area (km2),300.1312
+1998,Number of patches,3342.0
+1998,Size (mean),0.0898
+1998,Patches < minimum patch area,1997.0
+1998,Patches < minimum patch area (%),2.4925
+1998,Total edge,5708.776
+1998,Edge density,19.0209
+1998,Patch density,137.9302
+1998,Total Core Area (km2),300.1312
+1998,Cority,1.0
+1998,Shape Index (mean),1.6612
+1998,FRAC (mean),-0.7084
+1998,MESH (km2),0.4896
+1999,Patch area (km2),369.4727
+1999,Number of patches,3337.0
+1999,Size (mean),0.1107
+1999,Patches < minimum patch area,1794.0
+1999,Patches < minimum patch area (%),1.9562
+1999,Total edge,6576.04
+1999,Edge density,17.7984
+1999,Patch density,137.7238
+1999,Total Core Area (km2),369.4727
+1999,Cority,1.0
+1999,Shape Index (mean),1.7045
+1999,FRAC (mean),-0.7595
+1999,MESH (km2),0.7499
+2000,Patch area (km2),349.3918
+2000,Number of patches,3023.0
+2000,Size (mean),0.1156
+2000,Patches < minimum patch area,1681.0
+2000,Patches < minimum patch area (%),1.8569
+2000,Total edge,6127.81
+2000,Edge density,17.5385
+2000,Patch density,124.7645
+2000,Total Core Area (km2),349.3918
+2000,Cority,1.0
+2000,Shape Index (mean),1.7015
+2000,FRAC (mean),-0.5077
+2000,MESH (km2),0.8334
+2001,Patch area (km2),328.0162
+2001,Number of patches,3359.0
+2001,Size (mean),0.0977
+2001,Patches < minimum patch area,1984.0
+2001,Patches < minimum patch area (%),2.2526
+2001,Total edge,5989.435
+2001,Edge density,18.2596
+2001,Patch density,138.6318
+2001,Total Core Area (km2),328.0162
+2001,Cority,1.0
+2001,Shape Index (mean),1.6832
+2001,FRAC (mean),0.0452
+2001,MESH (km2),0.4989
+2002,Patch area (km2),326.2235
+2002,Number of patches,3483.0
+2002,Size (mean),0.0937
+2002,Patches < minimum patch area,1951.0
+2002,Patches < minimum patch area (%),2.329
+2002,Total edge,6083.481
+2002,Edge density,18.6482
+2002,Patch density,143.7495
+2002,Total Core Area (km2),326.2235
+2002,Cority,1.0
+2002,Shape Index (mean),1.6833
+2002,FRAC (mean),0.2071
+2002,MESH (km2),0.5382
+2003,Patch area (km2),228.2133
+2003,Number of patches,3510.0
+2003,Size (mean),0.065
+2003,Patches < minimum patch area,2165.0
+2003,Patches < minimum patch area (%),3.4185
+2003,Total edge,4887.074
+2003,Edge density,21.4145
+2003,Patch density,144.8638
+2003,Total Core Area (km2),228.2133
+2003,Cority,1.0
+2003,Shape Index (mean),1.6481
+2003,FRAC (mean),0.1224
+2003,MESH (km2),0.1682
+2004,Patch area (km2),331.7605
+2004,Number of patches,3378.0
+2004,Size (mean),0.0982
+2004,Patches < minimum patch area,1905.0
+2004,Patches < minimum patch area (%),2.1803
+2004,Total edge,6049.681
+2004,Edge density,18.2351
+2004,Patch density,139.4159
+2004,Total Core Area (km2),331.7605
+2004,Cority,1.0
+2004,Shape Index (mean),1.6587
+2004,FRAC (mean),-1.0543
+2004,MESH (km2),1.2348
+2005,Patch area (km2),363.078
+2005,Number of patches,3051.0
+2005,Size (mean),0.119
+2005,Patches < minimum patch area,1728.0
+2005,Patches < minimum patch area (%),1.8413
+2005,Total edge,5997.914
+2005,Edge density,16.5196
+2005,Patch density,125.9201
+2005,Total Core Area (km2),363.078
+2005,Cority,1.0
+2005,Shape Index (mean),1.6721
+2005,FRAC (mean),1.1112
+2005,MESH (km2),1.7744
+2006,Patch area (km2),408.3759
+2006,Number of patches,2938.0
+2006,Size (mean),0.139
+2006,Patches < minimum patch area,1446.0
+2006,Patches < minimum patch area (%),1.4462
+2006,Total edge,6487.547
+2006,Edge density,15.8862
+2006,Patch density,121.2564
+2006,Total Core Area (km2),408.3759
+2006,Cority,1.0
+2006,Shape Index (mean),1.7141
+2006,FRAC (mean),-1.1369
+2006,MESH (km2),1.9105
+2007,Patch area (km2),336.7346
+2007,Number of patches,3207.0
+2007,Size (mean),0.105
+2007,Patches < minimum patch area,1862.0
+2007,Patches < minimum patch area (%),2.0823
+2007,Total edge,5849.384
+2007,Edge density,17.3709
+2007,Patch density,132.3585
+2007,Total Core Area (km2),336.7346
+2007,Cority,1.0
+2007,Shape Index (mean),1.6627
+2007,FRAC (mean),0.4407
+2007,MESH (km2),0.7419
+2008,Patch area (km2),383.0991
+2008,Number of patches,3101.0
+2008,Size (mean),0.1235
+2008,Patches < minimum patch area,1612.0
+2008,Patches < minimum patch area (%),1.6961
+2008,Total edge,6445.769
+2008,Edge density,16.8253
+2008,Patch density,127.9837
+2008,Total Core Area (km2),383.0991
+2008,Cority,1.0
+2008,Shape Index (mean),1.6986
+2008,FRAC (mean),-0.125
+2008,MESH (km2),1.8533
+2009,Patch area (km2),395.5102
+2009,Number of patches,2994.0
+2009,Size (mean),0.1321
+2009,Patches < minimum patch area,1551.0
+2009,Patches < minimum patch area (%),1.5682
+2009,Total edge,6351.063
+2009,Edge density,16.0579
+2009,Patch density,123.5676
+2009,Total Core Area (km2),395.5102
+2009,Cority,1.0
+2009,Shape Index (mean),1.706
+2009,FRAC (mean),-0.3831
+2009,MESH (km2),1.7749
+2010,Patch area (km2),348.6051
+2010,Number of patches,3119.0
+2010,Size (mean),0.1118
+2010,Patches < minimum patch area,1687.0
+2010,Patches < minimum patch area (%),1.8744
+2010,Total edge,5970.515
+2010,Edge density,17.1269
+2010,Patch density,128.7266
+2010,Total Core Area (km2),348.6051
+2010,Cority,1.0
+2010,Shape Index (mean),1.6911
+2010,FRAC (mean),0.1306
+2010,MESH (km2),0.7066
+2011,Patch area (km2),406.5305
+2011,Number of patches,3059.0
+2011,Size (mean),0.1329
+2011,Patches < minimum patch area,1533.0
+2011,Patches < minimum patch area (%),1.586
+2011,Total edge,6598.863
+2011,Edge density,16.2321
+2011,Patch density,126.2503
+2011,Total Core Area (km2),406.5305
+2011,Cority,1.0
+2011,Shape Index (mean),1.7162
+2011,FRAC (mean),-0.1865
+2011,MESH (km2),1.3737
+2012,Patch area (km2),411.0121
+2012,Number of patches,2987.0
+2012,Size (mean),0.1376
+2012,Patches < minimum patch area,1412.0
+2012,Patches < minimum patch area (%),1.4411
+2012,Total edge,6619.603
+2012,Edge density,16.1056
+2012,Patch density,123.2787
+2012,Total Core Area (km2),411.0121
+2012,Cority,1.0
+2012,Shape Index (mean),1.7322
+2012,FRAC (mean),0.0058
+2012,MESH (km2),1.3562
+2013,Patch area (km2),440.3545
+2013,Number of patches,3042.0
+2013,Size (mean),0.1448
+2013,Patches < minimum patch area,1458.0
+2013,Patches < minimum patch area (%),1.3307
+2013,Total edge,6892.603
+2013,Edge density,15.6524
+2013,Patch density,125.5486
+2013,Total Core Area (km2),440.3545
+2013,Cority,1.0
+2013,Shape Index (mean),1.7227
+2013,FRAC (mean),0.177
+2013,MESH (km2),1.6884
+2014,Patch area (km2),404.1467
+2014,Number of patches,3312.0
+2014,Size (mean),0.122
+2014,Patches < minimum patch area,1664.0
+2014,Patches < minimum patch area (%),1.6243
+2014,Total edge,6872.552
+2014,Edge density,17.0051
+2014,Patch density,136.692
+2014,Total Core Area (km2),404.1467
+2014,Cority,1.0
+2014,Shape Index (mean),1.7329
+2014,FRAC (mean),0.5252
+2014,MESH (km2),0.9211
+2015,Patch area (km2),316.7631
+2015,Number of patches,3730.0
+2015,Size (mean),0.0849
+2015,Patches < minimum patch area,2011.0
+2015,Patches < minimum patch area (%),2.5293
+2015,Total edge,6180.585
+2015,Edge density,19.5117
+2015,Patch density,153.9436
+2015,Total Core Area (km2),316.7631
+2015,Cority,1.0
+2015,Shape Index (mean),1.6895
+2015,FRAC (mean),-0.7215
+2015,MESH (km2),0.3114
+2016,Patch area (km2),320.7298
+2016,Number of patches,3655.0
+2016,Size (mean),0.0878
+2016,Patches < minimum patch area,1932.0
+2016,Patches < minimum patch area (%),2.3923
+2016,Total edge,6127.229
+2016,Edge density,19.104
+2016,Patch density,150.8482
+2016,Total Core Area (km2),320.7298
+2016,Cority,1.0
+2016,Shape Index (mean),1.691
+2016,FRAC (mean),0.0991
+2016,MESH (km2),0.3905
+2017,Patch area (km2),412.5672
+2017,Number of patches,3496.0
+2017,Size (mean),0.118
+2017,Patches < minimum patch area,1762.0
+2017,Patches < minimum patch area (%),1.6229
+2017,Total edge,7074.375
+2017,Edge density,17.1472
+2017,Patch density,144.286
+2017,Total Core Area (km2),412.5672
+2017,Cority,1.0
+2017,Shape Index (mean),1.7288
+2017,FRAC (mean),0.3201
+2017,MESH (km2),0.5935
+2018,Patch area (km2),379.9019
+2018,Number of patches,3551.0
+2018,Size (mean),0.107
+2018,Patches < minimum patch area,1779.0
+2018,Patches < minimum patch area (%),1.8549
+2018,Total edge,6730.357
+2018,Edge density,17.716
+2018,Patch density,146.556
+2018,Total Core Area (km2),379.9019
+2018,Cority,1.0
+2018,Shape Index (mean),1.7212
+2018,FRAC (mean),-0.9543
+2018,MESH (km2),0.5263
+2019,Patch area (km2),379.9934
+2019,Number of patches,3458.0
+2019,Size (mean),0.1099
+2019,Patches < minimum patch area,1766.0
+2019,Patches < minimum patch area (%),1.8237
+2019,Total edge,6545.452
+2019,Edge density,17.2252
+2019,Patch density,142.7177
+2019,Total Core Area (km2),379.9934
+2019,Cority,1.0
+2019,Shape Index (mean),1.7133
+2019,FRAC (mean),0.209
+2019,MESH (km2),0.6112
+2020,Patch area (km2),392.3632
+2020,Number of patches,3434.0
+2020,Size (mean),0.1143
+2020,Patches < minimum patch area,1725.0
+2020,Patches < minimum patch area (%),1.7259
+2020,Total edge,6797.456
+2020,Edge density,17.3244
+2020,Patch density,141.7272
+2020,Total Core Area (km2),392.3632
+2020,Cority,1.0
+2020,Shape Index (mean),1.7222
+2020,FRAC (mean),-14.5144
+2020,MESH (km2),0.558
+2021,Patch area (km2),453.8855
+2021,Number of patches,3526.0
+2021,Size (mean),0.1287
+2021,Patches < minimum patch area,1889.0
+2021,Patches < minimum patch area (%),1.5184
+2021,Total edge,7360.631
+2021,Edge density,16.2169
+2021,Patch density,145.5242
+2021,Total Core Area (km2),453.8855
+2021,Cority,1.0
+2021,Shape Index (mean),1.6982
+2021,FRAC (mean),-0.7246
+2021,MESH (km2),1.2684
+2022,Patch area (km2),430.4371
+2022,Number of patches,3447.0
+2022,Size (mean),0.1249
+2022,Patches < minimum patch area,1747.0
+2022,Patches < minimum patch area (%),1.6148
+2022,Total edge,7153.279
+2022,Edge density,16.6186
+2022,Patch density,142.2637
+2022,Total Core Area (km2),430.4371
+2022,Cority,1.0
+2022,Shape Index (mean),1.7211
+2022,FRAC (mean),0.0382
+2022,MESH (km2),0.7605
+2023,Patch area (km2),415.3494
+2023,Number of patches,3484.0
+2023,Size (mean),0.1192
+2023,Patches < minimum patch area,1708.0
+2023,Patches < minimum patch area (%),1.6435
+2023,Total edge,7040.138
+2023,Edge density,16.9499
+2023,Patch density,143.7907
+2023,Total Core Area (km2),415.3494
+2023,Cority,1.0
+2023,Shape Index (mean),1.7342
+2023,FRAC (mean),0.0419
+2023,MESH (km2),0.6445
+2024,Patch area (km2),403.3488
+2024,Number of patches,3568.0
+2024,Size (mean),0.113
+2024,Patches < minimum patch area,1774.0
+2024,Patches < minimum patch area (%),1.7739
+2024,Total edge,7029.891
+2024,Edge density,17.4288
+2024,Patch density,147.2576
+2024,Total Core Area (km2),403.3488
+2024,Cority,1.0
+2024,Shape Index (mean),1.7319
+2024,FRAC (mean),0.6488
+2024,MESH (km2),0.6527

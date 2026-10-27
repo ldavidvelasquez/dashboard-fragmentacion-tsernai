@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fragmentación del hábitat · T. sernai</title>
+<meta name="description" content="Valores anuales observados (1986–2024) de las métricas de fragmentación del hábitat idóneo de Thryophilus sernai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f4f5f2;
+  --surface: #ffffff;
+  --ink: #1b2620;
+  --ink-2: #48544d;
+  --muted: #6f7a73;
+  --line: #dfe3dd;
+  --grid: #eceee9;
+  --brand: #1f8d49;
+  --brand-deep: #04381d;
+  --g-area: #1f8d49;
+  --g-tamano: #2532e4;
+  --g-subdiv: #db4d4f;
+  --g-borde: #7a5900;
+  --radius: 6px;
+  --gutter: 16px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 15px/1.5 "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); }
+.mono { font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; font-size: 12px; }
+
+/* Franja con la leyenda de coberturas MapBiomas */
+.leyenda-strip { display: flex; height: 6px; }
+.leyenda-strip span { flex: 1; }
+
+header.top { background: var(--surface); border-bottom: 1px solid var(--line); }
+header.top .wrap { padding-top: 22px; padding-bottom: 18px; }
+.eyebrow { margin: 0 0 4px; color: var(--brand); font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(22px, 3.2vw, 30px); line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
+.sub { margin: 6px 0 0; color: var(--ink-2); max-width: 72ch; }
+.params { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 16px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line); }
+.params div { display: flex; flex-direction: column; }
+.params dt { color: var(--muted); font-size: 12px; }
+.params dd { margin: 0; font-weight: 600; }
+
+/* Pestañas + filtro de periodo */
+.barra { position: sticky; top: 0; z-index: 10; background: var(--surface); border-bottom: 1px solid var(--line); }
+.barra .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.tabs { display: flex; gap: 4px; }
+.tab {
+  appearance: none; border: 0; background: none; cursor: pointer;
+  padding: 14px 12px 12px; font-family: inherit; font-weight: 600; font-size: 15px; line-height: 1; color: var(--muted);
+  border-bottom: 3px solid transparent;
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--brand); }
+.tab .n { display: inline-block; margin-right: 6px; color: var(--muted); font-weight: 400; }
+.periodo { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); padding: 8px 0; }
+.periodo select {
+  font: inherit; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 5px 8px; min-height: 34px;
+}
+.periodo button {
+  font: inherit; font-size: 13px; color: var(--ink-2); background: none; cursor: pointer;
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 5px 10px; min-height: 34px;
+}
+.periodo button:hover { color: var(--ink); border-color: var(--muted); }
+
+main { padding: 22px 0 40px; }
+[hidden] { display: none !important; }
+
+/* Encabezado de cada panel */
+.panel-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px 24px; flex-wrap: wrap; margin-bottom: 16px; }
+.panel-head h2 { margin: 0; font-size: 20px; line-height: 1.25; }
+.panel-head p { margin: 4px 0 0; color: var(--ink-2); max-width: 70ch; }
+.grupos { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; padding: 0; list-style: none; font-size: 13px; color: var(--ink-2); }
+.grupos li { display: flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 2px; flex: none; }
+
+/* Fichas de valores */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; border-top: 3px solid var(--c); }
+.kpi .lab { font-size: 13px; color: var(--ink-2); line-height: 1.3; min-height: 2.6em; }
+.kpi .val { font-size: 26px; font-weight: 700; line-height: 1.15; margin-top: 4px; }
+.kpi .val small { font-size: 14px; font-weight: 400; color: var(--muted); margin-left: 3px; }
+.kpi .ref { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+/* Tarjetas de gráficos */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 14px; }
+.grupo-titulo {
+  grid-column: 1 / -1; display: flex; align-items: center; gap: 8px;
+  margin: 10px 0 -4px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2);
+}
+.grupo-titulo:first-child { margin-top: 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 14px 8px; min-width: 0; }
+.card-h { display: flex; gap: 10px; align-items: flex-start; }
+.card-h .sw { margin-top: 5px; }
+.card h3 { margin: 0; font-size: 16px; line-height: 1.3; font-weight: 600; }
+.card h3 .u { color: var(--muted); font-weight: 400; }
+.card .desc { margin: 2px 0 0; font-size: 13px; color: var(--muted); line-height: 1.35; }
+.card .orig { display: block; color: var(--muted); margin-top: 2px; }
+.chart { position: relative; margin-top: 8px; height: 210px; touch-action: pan-y; }
+.chart svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.chart text { font-family: inherit; font-size: 12px; fill: var(--muted); }
+.tip {
+  position: absolute; top: 0; pointer-events: none; z-index: 2;
+  background: var(--ink); color: #fff; border-radius: 4px; padding: 5px 8px;
+  font-size: 13px; line-height: 1.3; white-space: nowrap; opacity: 0; transition: opacity .1s;
+}
+.tip b { font-weight: 700; }
+.tip span { color: #c9d1cb; }
+
+/* Panel Makurhini: separado visualmente */
+.panel-mk { border: 1px solid var(--line); border-radius: 8px; background: #eef1ec; overflow: hidden; }
+.panel-mk-band { background: var(--brand-deep); color: #fff; padding: 16px 18px; }
+.panel-mk-band .eyebrow { color: #9fd3ae; }
+.panel-mk-band h2 { margin: 0; font-size: 20px; }
+.panel-mk-band p { margin: 4px 0 0; color: #d4e3d8; max-width: 80ch; }
+.panel-mk-body { padding: 16px 18px 20px; }
+.notas { margin: 0 0 16px; padding: 10px 14px; background: var(--surface); border-left: 3px solid var(--brand-deep); border-radius: 0 var(--radius) var(--radius) 0; font-size: 14px; color: var(--ink-2); }
+.notas ul { margin: 0; padding-left: 18px; }
+.notas li + li { margin-top: 4px; }
+
+/* Tablas */
+details.tabla { margin-top: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+details.tabla summary { cursor: pointer; padding: 12px 14px; font-weight: 600; }
+.tabla-scroll { overflow-x: auto; border-top: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { padding: 6px 10px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--grid); }
+th { position: sticky; top: 0; background: #f7f8f6; color: var(--ink-2); font-weight: 600; vertical-align: bottom; }
+th:first-child, td:first-child { text-align: left; position: sticky; left: 0; background: var(--surface); }
+th:first-child { background: #f7f8f6; z-index: 1; }
+tbody tr:hover td { background: #f3f7f4; }
+.descargas { display: flex; flex-wrap: wrap; gap: 8px 16px; padding: 10px 14px; border-top: 1px solid var(--line); font-size: 14px; }
+a { color: #156a37; }
+
+/* Panel de parámetros */
+.params-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 12px; }
+.param { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--brand); border-radius: var(--radius); padding: 14px 16px; display: flex; flex-direction: column; }
+.param .nombre { font-size: 14px; font-weight: 600; color: var(--ink-2); line-height: 1.3; }
+.param .val { font-size: 28px; font-weight: 700; line-height: 1.15; margin: 6px 0 2px; }
+.param .val small { font-size: 14px; font-weight: 400; color: var(--muted); margin-left: 4px; }
+.param .exacto { color: var(--muted); word-break: break-all; }
+.param .desc { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--grid); font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+.descargas-sueltas { margin-top: 14px; padding: 0; border: 0; }
+
+footer { border-top: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: 13px; }
+footer .wrap { padding-top: 16px; padding-bottom: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+footer p { margin: 0; }
+
+@media (max-width: 640px) {
+  .barra .wrap { flex-direction: column; align-items: stretch; gap: 0; }
+  .tabs { margin: 0 calc(-1 * var(--gutter)); }
+  .tab { flex: 1; padding: 13px 4px 11px; font-size: 14px; }
+  .tab .n { display: none; }
+  .periodo { border-top: 1px solid var(--grid); justify-content: space-between; }
+  .periodo label { display: none; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .kpi { padding: 10px 11px; }
+  .kpi .val { font-size: 21px; }
+  .chart { height: 190px; }
+  .panel-mk { margin: 0 calc(-1 * var(--gutter)); border-radius: 0; border-left: 0; border-right: 0; }
+  .panel-mk-band, .panel-mk-body { padding-left: var(--gutter); padding-right: var(--gutter); }
+}
+@media print {
+  .barra { position: static; }
+  [hidden] { display: block !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="leyenda-strip" aria-hidden="true">
+    <span style="background:#1f8d49"></span><span style="background:#7dc975"></span><span style="background:#04381d"></span>
+    <span style="background:#026975"></span><span style="background:#519799"></span><span style="background:#d6bc74"></span>
+    <span style="background:#edde8e"></span><span style="background:#ffefc3"></span><span style="background:#e974ed"></span>
+    <span style="background:#7a5900"></span><span style="background:#d4271e"></span><span style="background:#9c0027"></span>
+    <span style="background:#db4d4f"></span><span style="background:#ffaa5f"></span><span style="background:#2532e4"></span>
+  </div>
+  <div class="wrap">
+    <p class="eyebrow">Serie temporal 1986–2024 · Salidas S22</p>
+    <h1>Fragmentación del hábitat idóneo de <em>Thryophilus sernai</em></h1>
+    <p class="sub">Valores anuales observados de las métricas de fragmentación, calculadas con Makurhini sobre todos los parches de hábitat. Sin modelos ni ajustes estadísticos.</p>
+    <dl class="params">
+      <div><dt>Área del paisaje</dt><dd>2.423,0 km²</dd></div>
+      <div><dt>Resolución de píxel</dt><dd>29,81 m (0,089 ha)</dd></div>
+      <div><dt>min_node_area</dt><dd>1 ha (0,01 km²)</dd></div>
+      <div><dt>edge_distance</dt><dd>0 m</dd></div>
+      <div><dt>Regla de vecindad</dt><dd>8 celdas</dd></div>
+    </dl>
+  </div>
+</header>
+
+<div class="barra">
+  <div class="wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-anual" aria-controls="panel-anual" aria-selected="true"><span class="n">01</span>Métricas anuales</button>
+      <button class="tab" role="tab" id="tab-mk" aria-controls="panel-mk" aria-selected="false"><span class="n">02</span>Resumen Makurhini</button>
+      <button class="tab" role="tab" id="tab-par" aria-controls="panel-par" aria-selected="false"><span class="n">03</span>Parámetros</button>
+    </div>
+    <div class="periodo">
+      <label for="desde">Periodo</label>
+      <select id="desde" aria-label="Año inicial"></select>
+      <span>–</span>
+      <select id="hasta" aria-label="Año final"></select>
+      <button type="button" id="reset">Serie completa</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="panel-anual" role="tabpanel" aria-labelledby="tab-anual">
+    <div class="panel-head">
+      <div>
+        <h2>Métricas anuales de fragmentación</h2>
+        <p>Valor observado de cada métrica por año. Pase el cursor o toque un gráfico para leer el valor de cada año.</p>
+      </div>
+      <ul class="grupos" id="grupos-anual"></ul>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="grid" id="grid-anual"></div>
+    <details class="tabla">
+      <summary>Tabla de datos · métricas anuales</summary>
+      <div class="tabla-scroll"><table id="tabla-anual"></table></div>
+      <div class="descargas">
+        <a href="data/metricas_anuales.csv" download>Descargar CSV</a>
+        <a href="data/metricas_fragmentacion_S22.xlsx" download>Descargar Excel original</a>
+      </div>
+    </details>
+  </section>
+
+  <section id="panel-mk" role="tabpanel" aria-labelledby="tab-mk" class="panel-mk" hidden>
+    <div class="panel-mk-band">
+      <p class="eyebrow">Panel 02 · Salida directa de MK_Fragmentation()</p>
+      <h2>Resumen Makurhini</h2>
+      <p>Métricas que reporta Makurhini para cada año, tal como aparecen en la hoja <span class="mono">resumen_makurhini</span>.</p>
+    </div>
+    <div class="panel-mk-body">
+      <div class="notas">
+        Con <span class="mono">edge_distance = 0</span> el área núcleo es igual al área de parches y el índice Cority vale 1 en todos los años.
+      </div>
+      <ul class="grupos" id="grupos-mk" style="margin-bottom:14px"></ul>
+      <div class="grid" id="grid-mk"></div>
+      <details class="tabla">
+        <summary>Tabla de datos · resumen Makurhini</summary>
+        <div class="tabla-scroll"><table id="tabla-mk"></table></div>
+        <div class="descargas">
+          <a href="data/resumen_makurhini.csv" download>Descargar CSV</a>
+          <a href="data/metricas_fragmentacion_S22.xlsx" download>Descargar Excel original</a>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="panel-par" role="tabpanel" aria-labelledby="tab-par" hidden>
+    <div class="panel-head">
+      <div>
+        <h2>Parámetros del análisis</h2>
+        <p>Valores de la hoja <span class="mono">parametros</span> con los que se calcularon todas las métricas. Son los mismos para todos los años de la serie.</p>
+      </div>
+    </div>
+    <div class="params-grid" id="params-grid"></div>
+    <div class="descargas descargas-sueltas">
+      <a href="data/parametros.csv" download>Descargar CSV</a>
+      <a href="data/metricas_fragmentacion_S22.xlsx" download>Descargar Excel original</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Fuente: <span class="mono">metricas_fragmentacion_S22.xlsx</span> (hojas metricas_anuales, resumen_makurhini y parametros).</p>
+    <p>Colores basados en la leyenda de coberturas y usos del suelo de MapBiomas.</p>
+  </div>
+</footer>
+
+<script src="data/datos.js"></script>
+<script>
+(function () {
+  "use strict";
+  var D = window.DATOS;
+
+  var GRUPOS = {
+    area:   { nombre: "Cantidad de hábitat", color: "#1f8d49" },
+    tamano: { nombre: "Tamaño y malla",      color: "#2532e4" },
+    subdiv: { nombre: "Subdivisión",         color: "#db4d4f" },
+    borde:  { nombre: "Borde y forma",       color: "#7a5900" }
+  };
+
+  var M_ANUAL = [
+    { k: "area_total_km2",      nombre: "Área total de hábitat",            u: "km²", dec: 1, g: "area",   desc: "Superficie de hábitat idóneo en el paisaje." },
+    { k: "n_parches",           nombre: "Número de parches",                u: "",    dec: 0, g: "subdiv", desc: "Fragmentos de hábitat independientes (vecindad de 8 celdas)." },
+    { k: "tam_medio_km2",       nombre: "Tamaño medio de parche",           u: "km²", dec: 3, g: "tamano", desc: "Área total de hábitat dividida entre el número de parches." },
+    { k: "mesh_km2",            nombre: "Tamaño efectivo de malla (MESH)",  u: "km²", dec: 2, g: "tamano", desc: "Probabilidad de que dos puntos del paisaje caigan en el mismo parche × área del paisaje." },
+    { k: "n_parches_menor_1ha", nombre: "Parches menores de 1 ha",          u: "",    dec: 0, g: "subdiv", desc: "Parches con área inferior a min_node_area." },
+    { k: "pct_area_menor_1ha",  nombre: "Área en parches menores de 1 ha",  u: "%",   dec: 2, g: "subdiv", desc: "Porcentaje del área de hábitat que suman esos parches." }
+  ];
+
+  var M_MK = [
+    { k: "Patch area (km2)",                 nombre: "Área de parches",               u: "km²",             dec: 1, g: "area" },
+    { k: "Total Core Area (km2)",            nombre: "Área núcleo total",             u: "km²",             dec: 1, g: "area" },
+    { k: "Cority",                           nombre: "Índice de núcleo (Cority)",     u: "",                dec: 2, g: "area" },
+    { k: "Size (mean)",                      nombre: "Tamaño medio de parche",        u: "km²",             dec: 3, g: "tamano" },
+    { k: "MESH (km2)",                       nombre: "Tamaño efectivo de malla",      u: "km²",             dec: 2, g: "tamano" },
+    { k: "Number of patches",                nombre: "Número de parches",             u: "",                dec: 0, g: "subdiv" },
+    { k: "Patch density",                    nombre: "Densidad de parches",           u: "parches/100 km²", dec: 1, g: "subdiv" },
+    { k: "Patches < minimum patch area",     nombre: "Parches menores de 1 ha",       u: "",                dec: 0, g: "subdiv" },
+    { k: "Patches < minimum patch area (%)", nombre: "Área en parches menores de 1 ha", u: "%",             dec: 2, g: "subdiv" },
+    { k: "Total edge",                       nombre: "Borde total",                   u: "km",              dec: 0, g: "borde" },
+    { k: "Edge density",                     nombre: "Densidad de borde",             u: "km/km²",          dec: 2, g: "borde" },
+    { k: "Shape Index (mean)",               nombre: "Índice de forma medio",         u: "",                dec: 3, g: "borde" }
+  ];
+
+  var YEARS = D.anual.anio;
+  var state = { a: YEARS[0], b: YEARS[YEARS.length - 1] };
+
+  var fmts = {};
+  function fmt(v, d) {
+    if (v == null || isNaN(v)) return "–";
+    if (!fmts[d]) fmts[d] = new Intl.NumberFormat("es-CO", { minimumFractionDigits: d, maximumFractionDigits: d });
+    return fmts[d].format(v);
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  function niceScale(min, max, count) {
+    if (max - min < 1e-12) { var pad = Math.abs(min) * 0.1 || 1; min -= pad; max += pad; }
+    var raw = (max - min) / count;
+    var mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    var n = raw / mag;
+    var step = (n < 1.5 ? 1 : n < 3 ? 2 : n < 7 ? 5 : 10) * mag;
+    var lo = Math.floor(min / step) * step, hi = Math.ceil(max / step) * step;
+    var ticks = [];
+    for (var v = lo; v <= hi + step / 2; v += step) ticks.push(+v.toFixed(10));
+    var dec = Math.max(0, -Math.floor(Math.log10(step) + 1e-9));
+    return { lo: lo, hi: hi, ticks: ticks, dec: dec };
+  }
+
+  function rango(years, values) {
+    var y = [], v = [];
+    for (var i = 0; i < years.length; i++) {
+      if (years[i] >= state.a && years[i] <= state.b) { y.push(years[i]); v.push(values[i]); }
+    }
+    return { y: y, v: v };
+  }
+
+  // ---------- Gráfico de línea (SVG) con cruz y tooltip ----------
+  var charts = [];
+  function crearChart(el, serie) {
+    var c = { el: el, serie: serie };
+    var tip = document.createElement("div");
+    tip.className = "tip";
+    el.appendChild(tip);
+    c.tip = tip;
+    new ResizeObserver(function () { requestAnimationFrame(function () { dibujar(c); }); }).observe(el);
+    charts.push(c);
+    return c;
+  }
+
+  function dibujar(c) {
+    var el = c.el, s = c.serie;
+    var W = el.clientWidth, H = el.clientHeight;
+    if (!W || !H) return;
+    var r = rango(s.years, s.values);
+    var ys = r.y, vs = r.v, n = ys.length;
+    var vmin = Math.min.apply(null, vs), vmax = Math.max.apply(null, vs);
+    var sc = niceScale(vmin, vmax, H < 200 ? 3 : 4);
+    var labels = sc.ticks.map(function (t) { return fmt(t, sc.dec); });
+    var ml = Math.max.apply(null, labels.map(function (l) { return l.length; })) * 6.6 + 12;
+    var mr = 10, mt = 10, mb = 24;
+    var iw = W - ml - mr, ih = H - mt - mb;
+    function X(i) { return ml + (n === 1 ? iw / 2 : (i * iw) / (n - 1)); }
+    function Y(v) { return mt + ih - ((v - sc.lo) / (sc.hi - sc.lo)) * ih; }
+
+    var paso = n <= 12 ? 1 : (iw / n < 14 ? 10 : 5);
+    var svg = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + esc(s.nombre + ", " + ys[0] + "–" + ys[n - 1]) + '">';
+    sc.ticks.forEach(function (t, i) {
+      var y = Y(t).toFixed(1);
+      svg += '<line x1="' + ml + '" x2="' + (W - mr) + '" y1="' + y + '" y2="' + y + '" stroke="' + (i === 0 ? "#c9cfc8" : "#eceee9") + '" stroke-width="1"/>';
+      svg += '<text x="' + (ml - 8) + '" y="' + y + '" dy="0.32em" text-anchor="end">' + labels[i] + "</text>";
+    });
+    ys.forEach(function (yr, i) {
+      if (paso === 1 || yr % paso === 0) {
+        svg += '<line x1="' + X(i).toFixed(1) + '" x2="' + X(i).toFixed(1) + '" y1="' + (mt + ih) + '" y2="' + (mt + ih + 4) + '" stroke="#c9cfc8"/>';
+        svg += '<text x="' + X(i).toFixed(1) + '" y="' + (H - 4) + '" text-anchor="middle">' + yr + "</text>";
+      }
+    });
+    var d = vs.map(function (v, i) { return (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1); }).join("");
+    svg += '<path d="' + d + '" fill="none" stroke="' + s.color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    var rad = iw / n > 9 ? 2.6 : 1.8;
+    vs.forEach(function (v, i) {
+      svg += '<circle cx="' + X(i).toFixed(1) + '" cy="' + Y(v).toFixed(1) + '" r="' + rad + '" fill="' + s.color + '"/>';
+    });
+    svg += '<line class="cruz" x1="0" x2="0" y1="' + mt + '" y2="' + (mt + ih) + '" stroke="#48544d" stroke-width="1" stroke-dasharray="3 3" visibility="hidden"/>';
+    svg += '<circle class="foco" r="5" fill="' + s.color + '" stroke="#fff" stroke-width="2" visibility="hidden"/>';
+    svg += '<rect class="hit" x="' + ml + '" y="0" width="' + iw + '" height="' + H + '" fill="transparent"/>';
+    svg += "</svg>";
+
+    var old = el.querySelector("svg");
+    if (old) old.remove();
+    el.insertAdjacentHTML("afterbegin", svg);
+
+    var svgEl = el.querySelector("svg");
+    var cruz = svgEl.querySelector(".cruz"), foco = svgEl.querySelector(".foco"), hit = svgEl.querySelector(".hit");
+    function mostrar(ev) {
+      var box = svgEl.getBoundingClientRect();
+      var px = ev.clientX - box.left;
+      var i = n === 1 ? 0 : Math.round(((px - ml) / iw) * (n - 1));
+      i = Math.max(0, Math.min(n - 1, i));
+      var x = X(i), y = Y(vs[i]);
+      cruz.setAttribute("x1", x); cruz.setAttribute("x2", x); cruz.setAttribute("visibility", "visible");
+      foco.setAttribute("cx", x); foco.setAttribute("cy", y); foco.setAttribute("visibility", "visible");
+      c.tip.innerHTML = "<b>" + ys[i] + "</b> &nbsp;" + fmt(vs[i], s.dec) + (s.u ? " <span>" + esc(s.u) + "</span>" : "");
+      c.tip.style.opacity = 1;
+      var tw = c.tip.offsetWidth;
+      var left = x + 10;
+      if (left + tw > W) left = x - tw - 10;
+      c.tip.style.left = Math.max(0, left) + "px";
+      c.tip.style.top = Math.max(0, Math.min(ih - 20, y - 34)) + "px";
+    }
+    function ocultar() {
+      cruz.setAttribute("visibility", "hidden");
+      foco.setAttribute("visibility", "hidden");
+      c.tip.style.opacity = 0;
+    }
+    hit.addEventListener("pointermove", mostrar);
+    hit.addEventListener("pointerdown", mostrar);
+    hit.addEventListener("pointerleave", ocultar);
+  }
+
+  // ---------- Construcción de paneles ----------
+  function leyendaGrupos(ul, claves) {
+    ul.innerHTML = claves.map(function (g) {
+      return '<li><span class="sw" style="background:' + GRUPOS[g].color + '"></span>' + GRUPOS[g].nombre + "</li>";
+    }).join("");
+  }
+
+  function tarjeta(m, orig) {
+    var g = GRUPOS[m.g];
+    var card = document.createElement("article");
+    card.className = "card";
+    card.innerHTML =
+      '<div class="card-h"><span class="sw" style="background:' + g.color + '"></span><div>' +
+      "<h3>" + esc(m.nombre) + (m.u ? ' <span class="u">(' + esc(m.u) + ")</span>" : "") + "</h3>" +
+      (m.desc ? '<p class="desc">' + esc(m.desc) + "</p>" : "") +
+      (orig ? '<span class="orig mono">' + esc(orig) + "</span>" : "") +
+      '</div></div><div class="chart"></div>';
+    return card;
+  }
+
+  // Panel 1
+  leyendaGrupos(document.getElementById("grupos-anual"), ["area", "subdiv", "tamano"]);
+  var gridA = document.getElementById("grid-anual");
+  M_ANUAL.forEach(function (m) {
+    var card = tarjeta(m, m.k);
+    gridA.appendChild(card);
+    crearChart(card.querySelector(".chart"), {
+      nombre: m.nombre, years: YEARS, values: D.anual[m.k], color: GRUPOS[m.g].color, dec: m.dec, u: m.u
+    });
+  });
+
+  // Panel 2
+  leyendaGrupos(document.getElementById("grupos-mk"), ["area", "tamano", "subdiv", "borde"]);
+  var gridM = document.getElementById("grid-mk");
+  var grupoActual = null;
+  M_MK.forEach(function (m) {
+    if (m.g !== grupoActual) {
+      grupoActual = m.g;
+      var h = document.createElement("div");
+      h.className = "grupo-titulo";
+      h.innerHTML = '<span class="sw" style="background:' + GRUPOS[m.g].color + '"></span>' + GRUPOS[m.g].nombre;
+      gridM.appendChild(h);
+    }
+    var card = tarjeta(m, m.k);
+    gridM.appendChild(card);
+    crearChart(card.querySelector(".chart"), {
+      nombre: m.nombre, years: D.makurhini.anio, values: D.makurhini.metricas[m.k], color: GRUPOS[m.g].color, dec: m.dec, u: m.u
+    });
+  });
+
+  // Panel 3: parámetros (en el orden de la hoja)
+  var P_META = [
+    { dec: 4, desc: "Lado de cada celda del ráster de hábitat." },
+    { dec: 4, desc: "Superficie de una celda: 29,8125 m × 29,8125 m." },
+    { dec: 2, desc: "Umbral de reporte de Makurhini: cuenta los parches menores de 1 ha y el porcentaje del área que suman. No elimina parches." },
+    { dec: 0, desc: "Un parche cuenta como menor de 1 ha si tiene menos de 12 píxeles (11 píxeles = 0,978 ha; 12 píxeles = 1,067 ha)." },
+    { dec: 0, desc: "Distancia del efecto de borde con la que se calcula el área núcleo. Con 0 m el área núcleo es igual al área del parche." },
+    { dec: 0, u: "celdas", desc: "Dos píxeles de hábitat forman parte del mismo parche si se tocan por un lado o por una esquina." },
+    { dec: 2, desc: "Superficie total del área de estudio, igual en todos los años." }
+  ];
+  document.getElementById("params-grid").innerHTML = Object.keys(D.parametros).map(function (nombre, i) {
+    var v = D.parametros[nombre], meta = P_META[i] || { dec: 4, desc: "" };
+    return '<div class="param"><div class="nombre">' + esc(nombre) + "</div>" +
+      '<div class="val">' + fmt(v, meta.dec) + (meta.u ? "<small>" + meta.u + "</small>" : "") + "</div>" +
+      '<div class="exacto mono">Valor en la hoja: ' + esc(String(v)) + "</div>" +
+      (meta.desc ? '<p class="desc">' + esc(meta.desc) + "</p>" : "") + "</div>";
+  }).join("");
+
+  // ---------- Fichas y tablas (dependen del periodo) ----------
+  function valorEn(years, values, yr) { var i = years.indexOf(yr); return i < 0 ? null : values[i]; }
+
+  function pintarKpis() {
+    document.getElementById("kpis").innerHTML = M_ANUAL.map(function (m) {
+      var vb = valorEn(YEARS, D.anual[m.k], state.b), va = valorEn(YEARS, D.anual[m.k], state.a);
+      var u = m.u ? "<small>" + esc(m.u) + "</small>" : "";
+      return '<div class="kpi" style="--c:' + GRUPOS[m.g].color + '"><div class="lab">' + esc(m.nombre) + " · " + state.b + "</div>" +
+        '<div class="val">' + fmt(vb, m.dec) + u + "</div>" +
+        '<div class="ref">' + state.a + ": " + fmt(va, m.dec) + (m.u ? " " + esc(m.u) : "") + "</div></div>";
+    }).join("");
+  }
+
+  function pintarTabla(id, years, cols) {
+    var h = "<thead><tr><th>Año</th>" + cols.map(function (c) {
+      return "<th>" + esc(c.nombre) + (c.u ? "<br><span style='font-weight:400;color:#6f7a73'>" + esc(c.u) + "</span>" : "") + "</th>";
+    }).join("") + "</tr></thead><tbody>";
+    years.forEach(function (yr, i) {
+      if (yr < state.a || yr > state.b) return;
+      h += "<tr><td>" + yr + "</td>" + cols.map(function (c) { return "<td>" + fmt(c.values[i], c.dec) + "</td>"; }).join("") + "</tr>";
+    });
+    document.getElementById(id).innerHTML = h + "</tbody>";
+  }
+
+  function actualizar() {
+    pintarKpis();
+    pintarTabla("tabla-anual", YEARS, M_ANUAL.map(function (m) { return { nombre: m.nombre, u: m.u, dec: m.dec, values: D.anual[m.k] }; }));
+    pintarTabla("tabla-mk", D.makurhini.anio, M_MK.map(function (m) { return { nombre: m.k, u: m.u, dec: m.dec, values: D.makurhini.metricas[m.k] }; }));
+    charts.forEach(dibujar);
+  }
+
+  // ---------- Filtro de periodo ----------
+  var selA = document.getElementById("desde"), selB = document.getElementById("hasta");
+  selA.innerHTML = selB.innerHTML = YEARS.map(function (y) { return "<option>" + y + "</option>"; }).join("");
+  function sincronizar() { selA.value = state.a; selB.value = state.b; }
+  selA.addEventListener("change", function () {
+    state.a = +selA.value; if (state.a >= state.b) state.b = Math.min(state.a + 1, YEARS[YEARS.length - 1]);
+    if (state.a >= state.b) state.a = state.b - 1;
+    sincronizar(); actualizar();
+  });
+  selB.addEventListener("change", function () {
+    state.b = +selB.value; if (state.b <= state.a) state.a = Math.max(state.b - 1, YEARS[0]);
+    if (state.b <= state.a) state.b = state.a + 1;
+    sincronizar(); actualizar();
+  });
+  document.getElementById("reset").addEventListener("click", function () {
+    state.a = YEARS[0]; state.b = YEARS[YEARS.length - 1]; sincronizar(); actualizar();
+  });
+
+  // ---------- Pestañas ----------
+  var tabs = { anual: document.getElementById("tab-anual"), makurhini: document.getElementById("tab-mk"), parametros: document.getElementById("tab-par") };
+  var panels = { anual: document.getElementById("panel-anual"), makurhini: document.getElementById("panel-mk"), parametros: document.getElementById("panel-par") };
+  var periodo = document.querySelector(".periodo");
+  function desdeHash() { var h = location.hash.slice(1); return tabs[h] ? h : "anual"; }
+  function abrir(cual) {
+    Object.keys(tabs).forEach(function (k) {
+      var on = k === cual;
+      tabs[k].setAttribute("aria-selected", on);
+      panels[k].hidden = !on;
+    });
+    periodo.hidden = cual === "parametros";
+    if (location.hash !== "#" + cual) history.replaceState(null, "", "#" + cual);
+  }
+  Object.keys(tabs).forEach(function (k) { tabs[k].addEventListener("click", function () { abrir(k); }); });
+  window.addEventListener("hashchange", function () { abrir(desdeHash()); });
+
+  sincronizar();
+  actualizar();
+  abrir(desdeHash());
+})();
+</script>
+</body>
+</html>
